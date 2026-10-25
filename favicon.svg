@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Temporary browser-tab icon: replace with your logo's "A" mark when it's ready -->
-  <rect width="64" height="64" rx="12" fill="#022b3a"/>
-  <path d="M25 12h14l12 40H40.5l-2.2-8H25.7l-2.2 8H13zm2.9 23h8.2L32 20z" fill="#ffffff"/>
-  <rect x="13" y="55" width="38" height="3" fill="#1f7a8c"/>
-</svg>
