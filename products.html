@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Addiction Streetwear</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#022b3a">
+  <!-- Preview shown when the page is shared on WhatsApp, Facebook, etc.
+       After going live, change og:image to the full address, e.g. https://yourdomain.com/images/web/sliders/Home_page_slider.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Addiction">
+  <meta property="og:title" content="Products | Addiction Streetwear">
+  <meta property="og:description" content="Shop all Addiction streetwear: graphic t-shirts, caps and jackets.">
+  <meta property="og:image" content="images/web/sliders/Home_page_slider.jpg">
+  <meta name="description" content="Shop all Addiction streetwear: graphic t-shirts, caps and jackets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== ANNOUNCEMENT BAR ========== -->
+  <div class="announcement">Free delivery on orders over <b>Rs 5,000</b> · Easy 30-day returns</div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="images/logo/logo.png" alt="Addiction Clothing" width="1502" height="363"></a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" id="cartToggle" aria-label="Open cart">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar" id="searchBar">
+      <form class="container" action="products.html" method="get">
+        <input type="search" name="q" placeholder="Search t-shirts, caps, jackets..." aria-label="Search products">
+        <button class="btn" type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== PAGE BANNER ========== -->
+    <section class="page-banner banner-slider">
+      <!-- Background slides: change the pictures here. They fade every few seconds. -->
+      <div class="banner-slides" aria-hidden="true">
+        <img class="banner-slide" src="images/web/Caps/Caps_1.jpg" alt="" style="object-position: center 45%;">
+        <img class="banner-slide" src="images/web/T_shirts/T_shirt_0.jpg" alt="" style="object-position: center 62%;">
+        <img class="banner-slide" src="images/web/jackets/Ladies_jacket.jpg" alt="" style="object-position: center 45%;">
+        <img class="banner-slide" src="images/web/T_shirts/t-shirt_2.jpg" alt="" style="object-position: center 62%;">
+        <img class="banner-slide" src="images/web/Caps/caps_3.jpg" alt="" style="object-position: center 55%;">
+        <img class="banner-slide" src="images/web/jackets/leather_jacket.jpg" alt="" style="object-position: center 50%;">
+      </div>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Products</span></nav>
+        <h1>Our Products</h1>
+        <p>Graphic tees, everyday caps and statement jackets. Pick your favourites and add them to your cart.</p>
+      </div>
+    </section>
+
+    <!-- ========== FILTERS + SEARCH ========== -->
+    <section class="container shop-toolbar" aria-label="Filter products">
+      <div class="filter-buttons" role="group" aria-label="Category">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="tshirts">T-Shirts</button>
+        <button class="filter-btn" data-filter="caps">Caps</button>
+        <button class="filter-btn" data-filter="jackets">Jackets</button>
+      </div>
+      <div class="shop-search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="search" id="productSearch" placeholder="Search products" aria-label="Search products">
+      </div>
+    </section>
+    <p class="container result-count" id="resultCount">Showing 8 products</p>
+
+    <!-- ========== T-SHIRTS ========== -->
+    <!-- To add a product: copy one <article class="product-card"> block inside the right category and edit it. -->
+    <section class="container category-section" data-category="tshirts">
+      <div class="category-head">
+        <h2>T-Shirts</h2>
+        <p>Heavyweight cotton tees and long sleeves with bold graphics.</p>
+      </div>
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/T_shirts/T_shirt_0.jpg" alt="Keep Going Long Sleeve" loading="lazy">
+            <span class="badge badge-sale">Sale</span>
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">T-Shirts</span>
+            <h3 class="product-name">Keep Going Long Sleeve</h3>
+            <p class="product-desc">White heavyweight cotton long sleeve with the "Keep You Going" chest print. Relaxed fit for everyday wear.</p>
+            <div class="size-picker" role="group" aria-label="Choose a size">
+              <span class="size-label">Size</span>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <span class="size-error" role="alert"></span>
+            </div>
+            <div class="product-price">Rs 2,999 <span class="old-price">Rs 3,799</span></div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/T_shirts/t_shirts_0.1.jpg" alt="Neon Spray Long Sleeve" loading="lazy">
+            <span class="badge badge-new">New</span>
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">T-Shirts</span>
+            <h3 class="product-name">Neon Spray Long Sleeve</h3>
+            <p class="product-desc">Our signature long sleeve with a hand-sprayed neon green sleeve. Every piece is slightly different.</p>
+            <div class="size-picker" role="group" aria-label="Choose a size">
+              <span class="size-label">Size</span>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <span class="size-error" role="alert"></span>
+            </div>
+            <div class="product-price">Rs 3,299</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/T_shirts/t-shirt_2.jpg" alt="Dragon Print Oversized Tee" loading="lazy">
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">T-Shirts</span>
+            <h3 class="product-name">Dragon Print Oversized Tee</h3>
+            <p class="product-desc">Black oversized tee with a white dragon graphic on the chest. Dropped shoulders and a loose, boxy cut.</p>
+            <div class="size-picker" role="group" aria-label="Choose a size">
+              <span class="size-label">Size</span>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <span class="size-error" role="alert"></span>
+            </div>
+            <div class="product-price">Rs 2,499</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========== CAPS ========== -->
+    <section class="container category-section" data-category="caps">
+      <div class="category-head">
+        <h2>Caps</h2>
+        <p>Snapbacks and soft dad caps to finish any outfit.</p>
+      </div>
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/Caps/caps_3.jpg" alt="Heather Grey Snapback" loading="lazy">
+            <span class="badge badge-new">New</span>
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Caps</span>
+            <h3 class="product-name">Heather Grey Snapback</h3>
+            <p class="product-desc">Structured six-panel snapback in heather grey with raised red and black embroidery. One size fits most.</p>
+            <p class="one-size">One size · adjustable strap</p>
+            <div class="product-price">Rs 1,999</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/Caps/Cap_2.jpg" alt="Sunburst Baseball Cap" loading="lazy">
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Caps</span>
+            <h3 class="product-name">Sunburst Baseball Cap</h3>
+            <p class="product-desc">Bright yellow baseball cap with a contrast navy brim and an adjustable strap at the back.</p>
+            <p class="one-size">One size · adjustable strap</p>
+            <div class="product-price">Rs 1,799</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/Caps/Caps_1.jpg" alt="Classic Dad Cap" loading="lazy" style="object-position: 60% center;">
+            <span class="badge badge-sale">Sale</span>
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Caps</span>
+            <h3 class="product-name">Classic Dad Cap</h3>
+            <p class="product-desc">Soft unstructured cotton cap with a curved brim and embroidered logo. Comes in six colours.</p>
+            <p class="one-size">One size · adjustable strap</p>
+            <div class="product-price">Rs 1,499 <span class="old-price">Rs 1,999</span></div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========== JACKETS ========== -->
+    <section class="container category-section" data-category="jackets">
+      <div class="category-head">
+        <h2>Jackets</h2>
+        <p>Layers that keep you warm and turn heads.</p>
+      </div>
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/jackets/Ladies_jacket.jpg" alt="Retro Colour Block Jacket" loading="lazy">
+            <span class="badge badge-new">New</span>
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Jackets</span>
+            <h3 class="product-name">Retro Colour Block Jacket</h3>
+            <p class="product-desc">Teal, orange and yellow windbreaker inspired by 90s track jackets. Lightweight and water resistant.</p>
+            <div class="size-picker" role="group" aria-label="Choose a size">
+              <span class="size-label">Size</span>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <span class="size-error" role="alert"></span>
+            </div>
+            <div class="product-price">Rs 7,999</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <img src="images/web/jackets/leather_jacket.jpg" alt="Shearling Leather Jacket" loading="lazy">
+            <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+          </div>
+          <div class="product-info">
+            <span class="product-category">Jackets</span>
+            <h3 class="product-name">Shearling Leather Jacket</h3>
+            <p class="product-desc">Brown leather jacket with a warm shearling collar and full lining. Built for cold winter days.</p>
+            <div class="size-picker" role="group" aria-label="Choose a size">
+              <span class="size-label">Size</span>
+              <button type="button" class="size-btn">S</button>
+              <button type="button" class="size-btn">M</button>
+              <button type="button" class="size-btn">L</button>
+              <button type="button" class="size-btn">XL</button>
+              <span class="size-error" role="alert"></span>
+            </div>
+            <div class="product-price">Rs 14,999</div>
+            <div class="card-actions">
+              <button class="btn-outline add-to-cart">Add to cart</button>
+              <button class="btn-solid buy-now">Buy now</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="container no-results" id="noResults" hidden>
+      <h2>No products found</h2>
+      <p>Try a different word, or <button class="text-link" id="clearFilters">show all products</button>.</p>
+    </div>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services" style="margin-top: 40px;">
+      <div class="container services-grid">
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M1 6h13v10H1zM14 9h4l3 3v4h-7z"/><circle cx="5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          <div><h3>Fast Delivery</h3><p>Free on orders over Rs 5,000</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          <div><h3>Easy Returns</h3><p>30 days, no questions asked</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <div><h3>Cash on Delivery</h3><p>Pay when your order arrives</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="4" height="6" rx="1"/><rect x="18" y="14" width="4" height="6" rx="1"/></svg>
+          <div><h3>24/7 Support</h3><p>We're here to help anytime</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logo/logo-white.png" alt="Addiction Clothing" width="1502" height="363"></a>
+        <p>Streetwear t-shirts, caps and jackets for people who live in their clothes.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.6 2.2 2.2 4.6 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.3 2.5 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.3-.1 5.7-2.5 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.3-2.5-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.5.1 3.9 1.5 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.5-1.5 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.5-.1-3.9-1.5-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.5 1.5-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.3v13.2a2.9 2.9 0 1 1-2.1-2.8V9a6.2 6.2 0 1 0 5.4 6.2V8.6a7.8 7.8 0 0 0 4.5 1.4V6.7a4.5 4.5 0 0 1-4.5-4.7z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2 class="footer-title">Shop</h2>
+        <ul>
+          <li><a href="products.html?category=tshirts">T-Shirts</a></li>
+          <li><a href="products.html?category=caps">Caps</a></li>
+          <li><a href="products.html?category=jackets">Jackets</a></li>
+          <li><a href="products.html">All Products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Company</h2>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="shipping-returns.html">Shipping &amp; Returns</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Get in touch</h2>
+        <ul>
+          <li>hello@addiction.store</li>
+          <li>+1 (555) 012-3456</li>
+          <li>Mon–Sat, 10am–7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span class="year">2026</span> Addiction. All rights reserved.</span>
+      <span>Cash on Delivery</span>
+    </div>
+  </footer>
+
+  <!-- ========== CART PANEL ========== -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-row"><span>Subtotal</span><strong id="cartSubtotal">Rs 0</strong></div>
+      <p class="cart-note" id="cartShipping"></p>
+      <button class="btn cart-checkout" id="checkoutBtn">Checkout</button>
+      <button class="text-link" id="continueShopping">Continue shopping</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

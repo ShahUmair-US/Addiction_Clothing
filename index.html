@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addiction | Streetwear T-Shirts, Caps & Jackets</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#022b3a">
+  <!-- Preview shown when the page is shared on WhatsApp, Facebook, etc.
+       After going live, change og:image to the full address, e.g. https://yourdomain.com/images/web/sliders/Home_page_slider.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Addiction">
+  <meta property="og:title" content="Addiction | Streetwear T-Shirts, Caps & Jackets">
+  <meta property="og:description" content="Addiction streetwear: T-shirts, caps and jackets made to wear every day.">
+  <meta property="og:image" content="images/web/sliders/Home_page_slider.jpg">
+  <meta name="description" content="Addiction streetwear: T-shirts, caps and jackets made to wear every day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo: replace the text with <img src="images/web/logo.png" alt="Addiction"> when the logo is ready -->
+      <a href="index.html" class="logo"><img src="images/logo/logo.png" alt="Addiction Clothing" width="1502" height="363"></a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main menu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" id="cartToggle" aria-label="Open cart">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-bar" id="searchBar">
+      <form class="container" action="products.html" method="get">
+        <input type="search" name="q" placeholder="Search t-shirts, caps, jackets..." aria-label="Search products">
+        <button class="btn" type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO SLIDER ========== -->
+    <section class="hero" id="heroSlider" aria-label="Featured collections">
+      <div class="slide">
+        <img src="images/web/sliders/Home_page_slider.jpg" alt="Two friends shopping for jackets" style="object-position: center 35%;">
+        <div class="slide-content">
+          <div class="container">
+            <span class="eyebrow">New Season 2026</span>
+            <h1>Wear Your Addiction</h1>
+            <p>Streetwear t-shirts, caps and jackets made for every day.</p>
+            <a href="products.html" class="btn btn-light">Shop Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/web/sliders/slider_3.jpg" alt="Red graphic t-shirt on a rack" style="object-position: center 40%;">
+        <div class="slide-content">
+          <div class="container">
+            <span class="eyebrow">T-Shirt Collection</span>
+            <h2>Bold Prints Only</h2>
+            <p>Oversized fits and graphic tees that stand out.</p>
+            <a href="products.html?category=tshirts" class="btn btn-light">Shop T-Shirts</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/web/sliders/Slider_4.jpg" alt="Woman carrying clothes on hangers" style="object-position: center 30%;">
+        <div class="slide-content">
+          <div class="container">
+            <span class="eyebrow">Just Dropped</span>
+            <h2>Fresh Fits Weekly</h2>
+            <p>New arrivals land every week. Be first to grab them.</p>
+            <a href="products.html" class="btn btn-light">See What's New</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/web/sliders/Slider_2.jpg" alt="Linen shirts hanging on wooden hangers" style="object-position: center 55%;">
+        <div class="slide-content">
+          <div class="container">
+            <span class="eyebrow">Up to 25% Off</span>
+            <h2>The Season Sale</h2>
+            <p>Selected caps and tees at lower prices, while stock lasts.</p>
+            <a href="products.html" class="btn btn-light">Shop the Sale</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="slider-arrow prev" aria-label="Previous slide"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="slider-arrow next" aria-label="Next slide"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="slider-dots"></div>
+    </section>
+
+    <!-- ========== SHOP BY CATEGORY ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Shop by category</span>
+            <h2 class="section-title">Find Your Fit</h2>
+          </div>
+          <a href="products.html" class="link-arrow">View all products</a>
+        </div>
+
+        <div class="category-grid">
+          <a href="products.html?category=tshirts" class="category-card">
+            <img src="images/web/T_shirts/t-shirt_2.jpg" alt="Black oversized graphic t-shirt" loading="lazy">
+            <div class="category-label">
+              <div><h3>T-Shirts</h3><span>3 styles</span></div>
+              <span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a href="products.html?category=caps" class="category-card">
+            <img src="images/web/Caps/Caps_1.jpg" alt="Colourful caps on a wooden shelf" loading="lazy" style="object-position: 60% center;">
+            <div class="category-label">
+              <div><h3>Caps</h3><span>3 styles</span></div>
+              <span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a href="products.html?category=jackets" class="category-card">
+            <img src="images/web/jackets/Ladies_jacket.jpg" alt="Retro colour block jacket" loading="lazy">
+            <div class="category-label">
+              <div><h3>Jackets</h3><span>2 styles</span></div>
+              <span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEW ARRIVALS ========== -->
+    <!-- To add a product: copy one <article class="product-card"> block and change the image, name and price. -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Just landed</span>
+            <h2 class="section-title">New Arrivals</h2>
+          </div>
+        </div>
+        <div class="product-grid">
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/T_shirts/T_shirt_0.jpg" alt="Keep Going Long Sleeve" loading="lazy">
+              <span class="badge badge-sale">Sale</span>
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <a class="quick-add choose-size" href="products.html?q=Keep%20Going%20Long%20Sleeve">Choose size</a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">T-Shirts</span>
+              <h3 class="product-name">Keep Going Long Sleeve</h3>
+              <div class="product-price">Rs 2,999 <span class="old-price">Rs 3,799</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/T_shirts/t_shirts_0.1.jpg" alt="Neon Spray Long Sleeve" loading="lazy">
+              <span class="badge badge-new">New</span>
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <a class="quick-add choose-size" href="products.html?q=Neon%20Spray%20Long%20Sleeve">Choose size</a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">T-Shirts</span>
+              <h3 class="product-name">Neon Spray Long Sleeve</h3>
+              <div class="product-price">Rs 3,299</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/T_shirts/t-shirt_2.jpg" alt="Dragon Print Oversized Tee" loading="lazy">
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <a class="quick-add choose-size" href="products.html?q=Dragon%20Print%20Oversized%20Tee">Choose size</a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">T-Shirts</span>
+              <h3 class="product-name">Dragon Print Oversized Tee</h3>
+              <div class="product-price">Rs 2,499</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/Caps/caps_3.jpg" alt="Heather Grey Snapback" loading="lazy">
+              <span class="badge badge-new">New</span>
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <button class="quick-add" data-name="Heather Grey Snapback">Add to cart</button>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Caps</span>
+              <h3 class="product-name">Heather Grey Snapback</h3>
+              <div class="product-price">Rs 1,999</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/Caps/Cap_2.jpg" alt="Sunburst Baseball Cap" loading="lazy">
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <button class="quick-add" data-name="Sunburst Baseball Cap">Add to cart</button>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Caps</span>
+              <h3 class="product-name">Sunburst Baseball Cap</h3>
+              <div class="product-price">Rs 1,799</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/Caps/Caps_1.jpg" alt="Classic Dad Cap" loading="lazy">
+              <span class="badge badge-sale">Sale</span>
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <button class="quick-add" data-name="Classic Dad Cap">Add to cart</button>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Caps</span>
+              <h3 class="product-name">Classic Dad Cap</h3>
+              <div class="product-price">Rs 1,499 <span class="old-price">Rs 1,999</span></div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/jackets/Ladies_jacket.jpg" alt="Retro Colour Block Jacket" loading="lazy">
+              <span class="badge badge-new">New</span>
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <a class="quick-add choose-size" href="products.html?q=Retro%20Colour%20Block%20Jacket">Choose size</a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Jackets</span>
+              <h3 class="product-name">Retro Colour Block Jacket</h3>
+              <div class="product-price">Rs 7,999</div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="images/web/jackets/leather_jacket.jpg" alt="Shearling Leather Jacket" loading="lazy">
+              <button class="wish-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-8.6C1.2 8.6 3 5 6.5 5c2 0 3.3 1.1 4 2.2.7-1.1 2-2.2 4-2.2C18 5 19.8 8.6 18.3 11.4 16 15.6 12 20 12 20z"/></svg></button>
+              <a class="quick-add choose-size" href="products.html?q=Shearling%20Leather%20Jacket">Choose size</a>
+            </div>
+            <div class="product-info">
+              <span class="product-category">Jackets</span>
+              <h3 class="product-name">Shearling Leather Jacket</h3>
+              <div class="product-price">Rs 14,999</div>
+            </div>
+          </article>
+
+        </div>
+        <div class="center"><a href="products.html" class="btn">Browse All Products</a></div>
+      </div>
+    </section>
+
+    <!-- ========== BRAND STORY ========== -->
+    <section class="section story">
+      <div class="container story-inner">
+        <div class="story-images">
+          <img src="images/web/T_shirts/T_shirt_0.jpg" alt="Man wearing the Keep Going long sleeve" loading="lazy" style="object-position: center 60%;">
+          <img src="images/web/jackets/leather_jacket.jpg" alt="Shearling leather jacket on a hook" loading="lazy">
+        </div>
+        <div class="story-text">
+          <span class="eyebrow">Our story</span>
+          <h2 class="section-title">Made for People Who Live in Their Clothes</h2>
+          <p>Addiction started with one idea: everyday streetwear should look good, feel good and last. We design every tee, cap and jacket to be worn hard and worn often.</p>
+          <div class="stats">
+            <div><strong>8+</strong><span>Signature styles</span></div>
+            <div><strong>100%</strong><span>Cotton tees</span></div>
+            <div><strong>30</strong><span>Day returns</span></div>
+          </div>
+          <a href="about.html" class="btn">About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="services">
+      <div class="container services-grid">
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M1 6h13v10H1zM14 9h4l3 3v4h-7z"/><circle cx="5" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          <div><h3>Fast Delivery</h3><p>Free on orders over Rs 5,000</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          <div><h3>Easy Returns</h3><p>30 days, no questions asked</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <div><h3>Cash on Delivery</h3><p>Pay when your order arrives</p></div>
+        </div>
+        <div class="service">
+          <svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="4" height="6" rx="1"/><rect x="18" y="14" width="4" height="6" rx="1"/></svg>
+          <div><h3>24/7 Support</h3><p>We're here to help anytime</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== NEWSLETTER ========== -->
+    <section class="section newsletter">
+      <div class="container">
+        <span class="eyebrow">Stay in the loop</span>
+        <h2 class="section-title">Get 10% Off Your First Order</h2>
+        <p>Join the Addiction list for new drops, restocks and members-only deals.</p>
+        <form id="newsletterForm">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo"><img src="images/logo/logo-white.png" alt="Addiction Clothing" width="1502" height="363"></a>
+        <p>Streetwear t-shirts, caps and jackets for people who live in their clothes.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.6 2.2 2.2 4.6 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.3 2.5 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.3-.1 5.7-2.5 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.3-2.5-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.5.1 3.9 1.5 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.5-1.5 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.5-.1-3.9-1.5-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.5 1.5-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 2h-3.3v13.2a2.9 2.9 0 1 1-2.1-2.8V9a6.2 6.2 0 1 0 5.4 6.2V8.6a7.8 7.8 0 0 0 4.5 1.4V6.7a4.5 4.5 0 0 1-4.5-4.7z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2 class="footer-title">Shop</h2>
+        <ul>
+          <li><a href="products.html?category=tshirts">T-Shirts</a></li>
+          <li><a href="products.html?category=caps">Caps</a></li>
+          <li><a href="products.html?category=jackets">Jackets</a></li>
+          <li><a href="products.html">All Products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Company</h2>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="shipping-returns.html">Shipping &amp; Returns</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Get in touch</h2>
+        <ul>
+          <li>hello@addiction.store</li>
+          <li>+1 (555) 012-3456</li>
+          <li>Mon–Sat, 10am–7pm</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span class="year">2026</span> Addiction. All rights reserved.</span>
+      <span>Cash on Delivery</span>
+    </div>
+  </footer>
+
+  <!-- ========== CART PANEL ========== -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-row"><span>Subtotal</span><strong id="cartSubtotal">Rs 0</strong></div>
+      <p class="cart-note" id="cartShipping"></p>
+      <button class="btn cart-checkout" id="checkoutBtn">Checkout</button>
+      <button class="text-link" id="continueShopping">Continue shopping</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Newsletter: shows a thank-you message (connect to an email service later)
+    document.getElementById("newsletterForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      showToast("Thanks for subscribing! Check your inbox for your 10% code.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>

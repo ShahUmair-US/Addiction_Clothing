@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Addiction Streetwear</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#022b3a">
+  <!-- Preview shown when the page is shared on WhatsApp, Facebook, etc.
+       After going live, change og:image to the full address, e.g. https://yourdomain.com/images/web/sliders/Home_page_slider.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Addiction">
+  <meta property="og:title" content="Checkout | Addiction Streetwear">
+  <meta property="og:description" content="Addiction streetwear: graphic t-shirts, caps and jackets.">
+  <meta property="og:image" content="images/web/sliders/Home_page_slider.jpg">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== ANNOUNCEMENT BAR ========== -->
+  <div class="announcement">Free delivery on orders over <b>Rs 5,000</b> · Easy 30-day returns</div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="images/logo/logo.png" alt="Addiction Clothing" width="1502" height="363"></a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-icons">
+        <button class="icon-btn" id="cartToggle" aria-label="Open cart">
+          <svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-count">0</span>
+        </button>
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== PAGE TITLE ========== -->
+    <section class="page-banner checkout-banner">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="products.html">Products</a> / <span>Checkout</span></nav>
+        <h1>Checkout</h1>
+        <ol class="checkout-steps">
+          <li class="done">Cart</li>
+          <li class="current">Details &amp; payment</li>
+          <li>Confirmation</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== EMPTY CART MESSAGE (shown when the cart has no items) ========== -->
+    <section class="section container checkout-empty" id="checkoutEmpty" hidden>
+      <h2>Your cart is empty</h2>
+      <p>Add some t-shirts, caps or jackets before checking out.</p>
+      <a href="products.html" class="btn">Shop Products</a>
+    </section>
+
+    <!-- ========== CHECKOUT FORM + ORDER SUMMARY ========== -->
+    <!--
+      Orders are emailed to you through FormSubmit.co (same as the contact form).
+      To change where orders go, edit the email in the form action below.
+      Card numbers are NEVER included in the email.
+    -->
+    <form class="section container checkout-layout" id="checkoutForm" action="https://formsubmit.co/umair@i4serv.com" method="POST" novalidate>
+
+      <div class="checkout-main">
+        <!-- Step 1: Contact -->
+        <fieldset class="checkout-box">
+          <legend><span class="box-num">1</span> Contact details</legend>
+          <div class="form-row">
+            <div class="field">
+              <label for="coName">Full name</label>
+              <input type="text" id="coName" autocomplete="name" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="coPhone">Contact number</label>
+              <input type="tel" id="coPhone" autocomplete="tel" placeholder="e.g. +1 555 012 3456" required>
+              <span class="field-error"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="coEmail">Email address <small>(for your order confirmation)</small></label>
+            <input type="email" id="coEmail" autocomplete="email" required>
+            <span class="field-error"></span>
+          </div>
+        </fieldset>
+
+        <!-- Step 2: Delivery address -->
+        <fieldset class="checkout-box">
+          <legend><span class="box-num">2</span> Delivery address</legend>
+          <div class="field">
+            <label for="coAddress">Street address</label>
+            <input type="text" id="coAddress" autocomplete="street-address" placeholder="House number and street name" required>
+            <span class="field-error"></span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="coCity">City</label>
+              <input type="text" id="coCity" autocomplete="address-level2" required>
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="coPostal">Postal code</label>
+              <input type="text" id="coPostal" autocomplete="postal-code" required>
+              <span class="field-error"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="coNotes">Delivery notes <small>(optional)</small></label>
+            <textarea id="coNotes" rows="3" placeholder="e.g. Call before delivery, leave at the front desk"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Step 3: Payment -->
+        <fieldset class="checkout-box">
+          <legend><span class="box-num">3</span> Payment method</legend>
+
+          <div class="pay-options">
+            <label class="pay-option">
+              <input type="radio" name="payMethod" value="Cash on Delivery" checked>
+              <span class="pay-text">
+                <strong>Cash on Delivery (COD)</strong>
+                <small>Pay in cash when your order arrives at your door.</small>
+              </span>
+              <span class="pay-icon">COD</span>
+            </label>
+            <!-- Card payments are switched off until a payment provider (like Stripe) is connected.
+                 To switch them back on, delete the word "hidden" on the next line. -->
+            <label class="pay-option" hidden>
+              <input type="radio" name="payMethod" value="Card">
+              <span class="pay-text">
+                <strong>Credit or Debit Card</strong>
+                <small>Visa and Mastercard accepted.</small>
+              </span>
+              <span class="pay-icon card-brands"><b class="visa">VISA</b><b class="mc"><i></i><i></i></b></span>
+            </label>
+          </div>
+
+          <div class="card-fields" id="cardFields" hidden>
+            <div class="field">
+              <label for="ccName">Name on card</label>
+              <input type="text" id="ccName" autocomplete="cc-name">
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="ccNumber">Card number</label>
+              <input type="text" id="ccNumber" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" maxlength="19">
+              <span class="field-error"></span>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="ccExpiry">Expiry date (MM/YY)</label>
+                <input type="text" id="ccExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5">
+                <span class="field-error"></span>
+              </div>
+              <div class="field">
+                <label for="ccCvc">CVC</label>
+                <input type="text" id="ccCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="3 digits on the back" maxlength="4">
+                <span class="field-error"></span>
+              </div>
+            </div>
+            <p class="secure-note">
+              <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              Your card details are not stored or emailed.
+            </p>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Order summary (filled from the cart) -->
+      <aside class="checkout-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-items" id="summaryItems"></div>
+        <div class="summary-rows">
+          <div><span>Subtotal</span><span id="sumSubtotal">Rs 0</span></div>
+          <div><span>Delivery</span><span id="sumDelivery">Rs 0</span></div>
+          <div class="summary-total"><span>Total</span><span id="sumTotal">Rs 0</span></div>
+        </div>
+        <button class="btn place-order" type="submit" id="placeOrderBtn">Place Order</button>
+        <p class="form-status" id="checkoutStatus" role="alert"></p>
+        <a href="products.html" class="text-link back-link">← Continue shopping</a>
+      </aside>
+    </form>
+
+    <!-- ========== ORDER CONFIRMATION (shown after placing the order) ========== -->
+    <section class="section container order-done" id="orderDone" hidden>
+      <div class="done-check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h2>Thank you for your order!</h2>
+      <p id="doneMessage"></p>
+      <div class="done-box" id="doneDetails"></div>
+      <a href="products.html" class="btn">Continue Shopping</a>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>© <span class="year">2026</span> Addiction. All rights reserved.</span>
+      <span>Cash on Delivery</span>
+    </div>
+  </footer>
+
+  <!-- ========== CART PANEL ========== -->
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-head">
+      <h2>Your Cart</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Close cart">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-row"><span>Subtotal</span><strong id="cartSubtotal">Rs 0</strong></div>
+      <p class="cart-note" id="cartShipping"></p>
+      <button class="btn cart-checkout" id="checkoutBtn">Checkout</button>
+      <button class="text-link" id="continueShopping">Continue shopping</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
