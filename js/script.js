@@ -1,6 +1,10 @@
 // Small script shared by every page: mobile menu, search bar, slider, cart, filters, messages.
 // The page content itself is all in the HTML files.
 
+// Order system: paste your Google Apps Script web app address between the quotes
+// (see google-apps-script/SETUP.md). While it's empty, orders are emailed through FormSubmit only.
+const ORDER_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFuxjOZHj23yvAEiBDPdKLeP2-Hgm08ptusZqwri9IHuw2mm71EYgIU9TABUj3qLSw2g/exec";
+
 const FREE_SHIPPING = 5000;   // free delivery on orders of Rs 5,000 or more
 const DELIVERY_FEE = 250;     // delivery fee for smaller orders
 const formatPrice = (n) => "Rs " + Math.round(n).toLocaleString("en-US");
@@ -420,6 +424,61 @@ if (contactForm) {
   });
 }
 
+/* ---------- Order sending (used by the checkout page) ---------- */
+const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// Order numbers include the date so they never repeat, e.g. ADD-261028-4827
+function makeOrderNumber() {
+  const d = new Date();
+  const two = (n) => String(n).padStart(2, "0");
+  return "ADD-" + String(d.getFullYear()).slice(2) + two(d.getMonth() + 1) + two(d.getDate()) + "-" + Math.floor(1000 + Math.random() * 9000);
+}
+
+// Main system: saves the order in your Google Sheet and emails the customer (see google-apps-script/SETUP.md)
+async function sendOrderToSheet(order) {
+  try {
+    const response = await fetch(ORDER_SCRIPT_URL, { method: "POST", body: new URLSearchParams(order) });
+    const result = await response.json();
+    return result.ok === true;
+  } catch {
+    return false;
+  }
+}
+
+// Backup: emails the order to you and a confirmation to the customer through FormSubmit
+async function sendOrderByFormSubmit(order) {
+  const form = document.getElementById("checkoutForm");
+  const data = new FormData();
+  data.append("_subject", "New order " + order.orderNumber + " from the Addiction website");
+  data.append("_template", "table");
+  data.append("_captcha", "false");
+  data.append("_autoresponse",
+    "Thank you for your order, " + order.name + "! Your order number is " + order.orderNumber + ".\n\n" +
+    order.items + "\n\nTotal: " + order.total + " (" + order.payment + ")\nDeliver to: " + order.address + "\n\n" +
+    "We'll call you on " + order.phone + " to confirm, and email your tracking number when it ships.\n- Addiction Clothing");
+  data.append("Order number", order.orderNumber);
+  data.append("Customer name", order.name);
+  data.append("Contact number", order.phone);
+  data.append("email", order.email);
+  data.append("Address", order.address);
+  data.append("Delivery notes", order.notes || "None");
+  data.append("Items", order.items);
+  data.append("Subtotal", order.subtotal);
+  data.append("Delivery", order.delivery);
+  data.append("Total", order.total);
+  data.append("Payment", order.payment);
+  try {
+    const response = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: data
+    });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
 /* ---------- Checkout page ---------- */
 const checkoutForm = document.getElementById("checkoutForm");
 if (checkoutForm) {
@@ -523,39 +582,28 @@ if (checkoutForm) {
     }
 
     const { cart, subtotal, delivery, total } = orderTotals();
-    const orderNumber = "ADD-" + Math.floor(100000 + Math.random() * 900000);
     const value = (id) => document.getElementById(id).value.trim();
-    const payment = isCard()
-      ? "Card ending " + value("ccNumber").replace(/\D/g, "").slice(-4)
-      : "Cash on Delivery";
-
-    // Order details sent to your email. Card number, expiry and CVC are never included.
-    const data = new FormData();
-    data.append("_subject", "New order " + orderNumber + " from the Addiction website");
-    data.append("_template", "table");
-    data.append("_captcha", "false");
-    data.append("Order number", orderNumber);
-    data.append("Customer name", value("coName"));
-    data.append("Contact number", value("coPhone"));
-    data.append("email", value("coEmail"));
-    data.append("Address", value("coAddress") + ", " + value("coCity") + " " + value("coPostal"));
-    data.append("Delivery notes", value("coNotes") || "None");
-    data.append("Items", cart.map((i) => `${i.qty} x ${i.name}, size ${i.size || "One size"} (${formatPrice(i.price * i.qty)})`).join("\n"));
-    data.append("Subtotal", formatPrice(subtotal));
-    data.append("Delivery", delivery === 0 ? "Free" : formatPrice(delivery));
-    data.append("Total", formatPrice(total));
-    data.append("Payment", payment);
+    // Card number, expiry and CVC are never sent anywhere
+    const order = {
+      orderNumber: makeOrderNumber(),
+      name: value("coName"),
+      phone: value("coPhone"),
+      email: value("coEmail"),
+      address: value("coAddress") + ", " + value("coCity") + " " + value("coPostal"),
+      notes: value("coNotes"),
+      items: cart.map((i) => `${i.qty} x ${i.name}, size ${i.size || "One size"} (${formatPrice(i.price * i.qty)})`).join("\n"),
+      subtotal: formatPrice(subtotal),
+      delivery: delivery === 0 ? "Free" : formatPrice(delivery),
+      total: formatPrice(total),
+      payment: isCard() ? "Card ending " + value("ccNumber").replace(/\D/g, "").slice(-4) : "Cash on Delivery"
+    };
 
     placeBtn.disabled = true;
     placeBtn.textContent = "Placing your order...";
-    try {
-      const response = await fetch(checkoutForm.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: data
-      });
-      if (!response.ok) throw new Error("Order failed");
-    } catch {
+    const placed = ORDER_SCRIPT_URL
+      ? (await sendOrderToSheet(order)) || (await sendOrderByFormSubmit(order))
+      : await sendOrderByFormSubmit(order);
+    if (!placed) {
       status.textContent = "Sorry, we couldn't place your order. Please check your internet connection and try again.";
       placeBtn.disabled = false;
       renderSummary();
@@ -564,13 +612,15 @@ if (checkoutForm) {
 
     // Show the confirmation and empty the cart
     document.getElementById("doneMessage").textContent =
-      "Your order " + orderNumber + " has been placed. We'll contact you on " + value("coPhone") + " to confirm delivery.";
+      "Your order " + order.orderNumber + " has been placed. A confirmation email is on its way to " + order.email +
+      ". We'll call you on " + order.phone + " to confirm, and email your tracking number when it ships.";
     document.getElementById("doneDetails").innerHTML = `
-      <div><span>Order number</span><span>${orderNumber}</span></div>
-      <div><span>Deliver to</span><span>${value("coName")}, ${value("coAddress")}, ${value("coCity")}</span></div>
-      <div><span>Payment</span><span>${payment}</span></div>
+      <div><span>Order number</span><span>${escapeHtml(order.orderNumber)}</span></div>
+      <div><span>Deliver to</span><span>${escapeHtml(order.name)}, ${escapeHtml(order.address)}</span></div>
+      <div><span>Payment</span><span>${escapeHtml(order.payment)}</span></div>
       <div><span>Items</span><span>${cart.reduce((n, i) => n + i.qty, 0)}</span></div>
-      <div><span>Total</span><span>${formatPrice(total)}</span></div>`;
+      <div><span>Total</span><span>${order.total}</span></div>`;
+    document.getElementById("trackLink").href = "track-order.html?order=" + encodeURIComponent(order.orderNumber);
     checkoutForm.hidden = true;
     document.getElementById("orderDone").hidden = false;
     document.querySelectorAll(".checkout-steps li").forEach((li) => li.classList.add("done"));
@@ -582,6 +632,79 @@ if (checkoutForm) {
 
   renderSummary();
   onCartChange = () => { if (document.getElementById("orderDone").hidden) renderSummary(); };
+}
+
+/* ---------- Track Order page ---------- */
+const trackForm = document.getElementById("trackForm");
+if (trackForm) {
+  const orderInput = document.getElementById("tOrder");
+  const emailInput = document.getElementById("tEmail");
+  const trackStatus = document.getElementById("trackStatus");
+  const trackBtn = document.getElementById("trackBtn");
+  const result = document.getElementById("trackResult");
+  const steps = ["Order received", "Confirmed", "Shipped", "Delivered"];
+
+  // Order number from the confirmation page or email link
+  orderInput.value = new URLSearchParams(location.search).get("order") || "";
+
+  // Until the Google Sheet order system is connected, explain how to get an update instead
+  if (!ORDER_SCRIPT_URL) document.getElementById("trackSoon").hidden = false;
+
+  function showOrder(o) {
+    document.getElementById("rOrder").textContent = o.order;
+    document.getElementById("rDate").textContent = "Placed on " + o.date;
+    const badge = document.getElementById("rBadge");
+    badge.textContent = o.status;
+    badge.className = "track-badge status-" + o.status.toLowerCase().replace(/\s+/g, "-");
+
+    const reached = steps.indexOf(o.status);
+    document.querySelectorAll("#rSteps li").forEach((li, i) => {
+      li.classList.toggle("done", o.status !== "Cancelled" && i <= reached);
+      li.classList.toggle("current", i === reached);
+    });
+    document.getElementById("rSteps").hidden = o.status === "Cancelled";
+
+    const rows = [["Items", escapeHtml(o.items || "").replace(/\n/g, "<br>")], ["Total", escapeHtml(o.total || "")]];
+    if (o.courier) rows.push(["Courier", escapeHtml(o.courier)]);
+    if (o.trackingNumber) rows.push(["Tracking number", escapeHtml(o.trackingNumber)]);
+    if (o.status === "Cancelled") rows.push(["Note", "This order was cancelled. Contact us if you have any questions."]);
+    else if (!o.trackingNumber) rows.push(["Tracking", "You'll get your tracking number by email as soon as your order ships."]);
+    document.getElementById("rDetails").innerHTML = rows.map(([k, v]) => `<div><span>${k}</span><span>${v}</span></div>`).join("");
+
+    const courierLink = document.getElementById("rCourierLink");
+    courierLink.hidden = !o.trackingLink;
+    if (o.trackingLink) courierLink.href = o.trackingLink;
+    result.hidden = false;
+  }
+
+  trackForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    trackStatus.textContent = "";
+    result.hidden = true;
+    const order = orderInput.value.trim();
+    const email = emailInput.value.trim();
+    if (!order || !email) {
+      trackStatus.textContent = "Please enter your order number and email address.";
+      return;
+    }
+    if (!ORDER_SCRIPT_URL) {
+      trackStatus.textContent = "Online tracking isn't switched on yet. Please contact us with your order number.";
+      return;
+    }
+    trackBtn.disabled = true;
+    trackBtn.textContent = "Searching...";
+    try {
+      const response = await fetch(ORDER_SCRIPT_URL, { method: "POST", body: new URLSearchParams({ action: "track", order, email }) });
+      const data = await response.json();
+      if (data.ok) showOrder(data);
+      else trackStatus.textContent = data.error;
+    } catch {
+      trackStatus.textContent = "Sorry, we couldn't check your order right now. Please try again in a moment.";
+    } finally {
+      trackBtn.disabled = false;
+      trackBtn.textContent = "Track Order";
+    }
+  });
 }
 
 /* ---------- Footer year ---------- */

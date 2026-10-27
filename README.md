@@ -23,6 +23,11 @@ The online store for **Addiction**, a streetwear brand selling graphic t-shirts,
 | `checkout.html` | Checkout |
 | `shipping-returns.html` | Shipping & Returns |
 | `privacy-policy.html` | Privacy Policy |
+| `track-order.html` | Track Order (customers check their order status) |
+
+## Order system
+
+Orders are saved in a Google Sheet, and customers get emails for **order confirmation**, **shipped (with courier and tracking number)** and **delivered**. The code and the step-by-step setup guide are in the `google-apps-script/` folder (`Code.gs` and `SETUP.md`). Until it's connected, orders are emailed through FormSubmit, and customers get a confirmation email from there.
 
 ## Folder structure
 
